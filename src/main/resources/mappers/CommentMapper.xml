@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.qa.carina.demo.db.mappers.CommentMapper">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+            INSERT INTO carina.COMMENTS (POST_ID, NAME, EMAIL, BODY)
+            VALUES (
+                #{postId},
+                #{name},
+                #{email},
+                #{body}
+            )
+        ]]>
+    </insert>
+
+    <sql id="getComment">
+        <![CDATA[
+            SELECT
+                C.POST_ID AS COMMENT_POST_ID,
+                C.ID AS COMMENT_ID,
+                C.NAME AS COMMENT_NAME,
+                C.EMAIL AS COMMENT_EMAIL,
+                C.BODY AS COMMENT_BODY
+            FROM
+                carina.COMMENTS C
+        ]]>
+    </sql>
+
+    <select id="findById" resultMap="CommentResultMap">
+        <include refid="getComment" />
+        <![CDATA[
+            WHERE C.ID = #{id};
+        ]]>
+    </select>
+
+    <select id="findByCommentName" resultMap="CommentResultMap">
+        <include refid="getComment" />
+        <![CDATA[
+            WHERE C.NAME = #{commentName};
+        ]]>
+    </select>
+
+    <update id="update">
+        <![CDATA[
+            UPDATE
+                carina.COMMENTS
+        ]]>
+        <set>
+            <if test="null != name">
+                <![CDATA[
+                    NAME = #{name},
+                ]]>
+            </if>
+            <if test="null != email">
+                <![CDATA[
+                    EMAIL = #{email},
+                ]]>
+            </if>
+            <if test="null != body">
+                <![CDATA[
+                    BODY = #{body},
+                ]]>
+            </if>
+        </set>
+        <![CDATA[
+            WHERE
+                ID = #{id}
+        ]]>
+    </update>
+
+    <delete id="delete">
+        <![CDATA[
+            DELETE FROM carina.COMMENTS
+            WHERE ID = #{id}
+        ]]>
+    </delete>
+
+    <resultMap type="com.solvd.qa.carina.demo.db.models.Comment"
+               id="CommentResultMap" autoMapping="false">
+        <id column="COMMENT_ID" property="id" />
+        <result column="COMMENT_POST_ID" property="postId" />
+        <result column="COMMENT_NAME" property="name" />
+        <result column="COMMENT_EMAIL" property="email" />
+        <result column="COMMENT_BODY" property="body" />
+    </resultMap>
+
+</mapper>

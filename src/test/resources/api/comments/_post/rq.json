@@ -1,0 +1,9 @@
+[
+  {
+    "postId": 1,
+    "id": 1,
+    <#if name??>"name": "${name}",</#if>
+    "email": "Eliseo@gardner.biz",
+    <#if body??>"body": "${body}"</#if>
+  }
+]

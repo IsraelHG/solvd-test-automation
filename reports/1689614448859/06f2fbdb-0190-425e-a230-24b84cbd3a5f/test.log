@@ -1,0 +1,61 @@
+[2023-07-17 05:20:57] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-07-17 05:20:57] [1] [INFO] TEST [solvd-test-automation - testCreateComment] STARTED at [10:20:57 2023-07-17]
+[2023-07-17 05:20:59] [1] [INFO] Base properties loaded: api/comments/comment.properties
+[2023-07-17 05:21:02] [1] [INFO] Request method:	POST
+Request URI:	https://jsonplaceholder.typicode.com/comments
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+[
+    {
+        "postId": 1,
+        "id": 1,
+        "name": "qrnvputnim",
+        "email": "Eliseo@gardner.biz",
+        "body": "ptqrjphnmsptnpprpwvv"
+    }
+]
+HTTP/1.1 201 Created
+Date: Mon, 17 Jul 2023 17:21:02 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 155
+Connection: keep-alive
+X-Powered-By: Express
+X-Ratelimit-Limit: 1000
+X-Ratelimit-Remaining: 999
+X-Ratelimit-Reset: 1689614489
+Vary: Origin, X-HTTP-Method-Override, Accept-Encoding
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+Access-Control-Expose-Headers: Location
+Location: http://jsonplaceholder.typicode.com/comments/501
+X-Content-Type-Options: nosniff
+Etag: W/"9b-bExhXWvIgXqpNsGBslkprlXozpE"
+Via: 1.1 vegur
+CF-Cache-Status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2FmfvTlm5QfWu%2BeQJXdGpJP1cmS7znbowq7yhV43SHbdpFXG94zk9n6RTk7fm9tkuJMB0pgwLfQDBgjwtc5rsR7kC8mOZdq37rHNSECLkTPs307sFoEPx30Zqn8kY0k%2BpGL56u3CqrEGjzBLgOfqI"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 7e8428b64e6f533d-LAX
+alt-svc: h3=":443"; ma=86400
+
+{
+    "0": {
+        "postId": 1,
+        "id": 1,
+        "name": "qrnvputnim",
+        "email": "Eliseo@gardner.biz",
+        "body": "ptqrjphnmsptnpprpwvv"
+    },
+    "id": 501
+}
+
+[2023-07-17 05:21:02] [1] [INFO] TEST [solvd-test-automation - testCreateComment] PASSED at [10:21:02 2023-07-17]
