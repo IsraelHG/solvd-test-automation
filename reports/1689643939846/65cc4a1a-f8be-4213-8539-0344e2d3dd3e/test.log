@@ -1,0 +1,149 @@
+[2023-07-18 01:32:22] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-07-18 01:32:22] [1] [INFO] TEST [solvd-test-automation - testPatchComment] STARTED at [18:32:22 2023-07-17]
+[2023-07-18 01:32:23] [1] [INFO] Base properties loaded: api/comments/comment.properties
+[2023-07-18 01:32:24] [1] [INFO] Request method:	POST
+Request URI:	https://jsonplaceholder.typicode.com/comments
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+[
+    {
+        "postId": 1,
+        "id": 1,
+        "name": "emefddgkfm",
+        "email": "Eliseo@gardner.biz",
+        "body": "ikegbhegfjbgmnlspqms"
+    }
+]
+HTTP/1.1 201 Created
+Date: Tue, 18 Jul 2023 01:32:23 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 155
+Connection: keep-alive
+X-Powered-By: Express
+X-Ratelimit-Limit: 1000
+X-Ratelimit-Remaining: 997
+X-Ratelimit-Reset: 1689643949
+Vary: Origin, X-HTTP-Method-Override, Accept-Encoding
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+Access-Control-Expose-Headers: Location
+Location: http://jsonplaceholder.typicode.com/comments/501
+X-Content-Type-Options: nosniff
+Etag: W/"9b-eWtpdQ0rHJzXdnd5zZa66LDsqi0"
+Via: 1.1 vegur
+CF-Cache-Status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=vZIK7zBoCBkj5sfByoWk40eT56Bu8yIX15axSfDK3PTZhXNEvr6baqK9QKO%2FBjabU6MW6WEwfhSeKwrZ%2FVgpXb0m20IHFZ9MNHLC6IfDpJ1jRgg0%2BZALGJ0WJyi92wlkQQHUbxnfiq0w9Q1UigrM"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 7e86f875c82a09fb-LAS
+alt-svc: h3=":443"; ma=86400
+
+{
+    "0": {
+        "postId": 1,
+        "id": 1,
+        "name": "emefddgkfm",
+        "email": "Eliseo@gardner.biz",
+        "body": "ikegbhegfjbgmnlspqms"
+    },
+    "id": 501
+}
+
+[2023-07-18 01:32:25] [1] [INFO] ikegbhegfjbgmnlspqms
+[2023-07-18 01:32:25] [1] [INFO] Base properties loaded: api/comments/comment.properties
+[2023-07-18 01:32:25] [1] [INFO] Request method:	PATCH
+Request URI:	https://jsonplaceholder.typicode.com/comments/501
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "body": "qwvyywqtqyumfnjmmslo"
+}
+HTTP/1.1 200 OK
+Date: Tue, 18 Jul 2023 01:32:24 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 36
+Connection: keep-alive
+X-Powered-By: Express
+X-Ratelimit-Limit: 1000
+X-Ratelimit-Remaining: 996
+X-Ratelimit-Reset: 1689643949
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+X-Content-Type-Options: nosniff
+Etag: W/"24-bslqX6WvQV9F5sMihmL6mnXo52w"
+Via: 1.1 vegur
+CF-Cache-Status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=PVWXL8asUYBCUsz57uUT0SsbAlsh2Oq715lg8mO83OnMW92%2BHmCmB%2F%2FsdkREsKt3ArNYeilrW5Ln5rweZee8B3iPCa%2BmqCRfpaCLgkY8yKhPFCtpvdaY0DL64Yqp3c%2Fr1EREnsIGom7KXekehZWz"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 7e86f87aeeaa09fb-LAS
+alt-svc: h3=":443"; ma=86400
+
+{
+    "body": "qwvyywqtqyumfnjmmslo"
+}
+
+[2023-07-18 01:32:25] [1] [ERROR] TEST [solvd-test-automation - testPatchComment] FAILED at [18:32:25 2023-07-17] - 
+Expected: email
+     but none found
+ ; 
+Expected: id
+     but none found
+ ; 
+Expected: name
+     but none found
+ ; 
+Expected: postId
+     but none found
+
+
+org.skyscreamer.jsonassert.JSONAssert.assertEquals(JSONAssert.java:482)
+org.skyscreamer.jsonassert.JSONAssert.assertEquals(JSONAssert.java:464)
+com.zebrunner.carina.api.AbstractApiMethodV2.validateResponse(AbstractApiMethodV2.java:339)
+com.zebrunner.carina.api.AbstractApiMethodV2.validateResponse(AbstractApiMethodV2.java:299)
+com.zebrunner.carina.api.AbstractApiMethodV2.validateResponse(AbstractApiMethodV2.java:363)
+com.solvd.qa.carina.demo.APICommentsTest.testPatchComment(APICommentsTest.java:79)
+java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+java.base/java.lang.reflect.Method.invoke(Method.java:578)
+org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+org.testng.TestRunner.privateRun(TestRunner.java:829)
+org.testng.TestRunner.run(TestRunner.java:602)
+org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+org.testng.SuiteRunner.run(SuiteRunner.java:330)
+org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+org.testng.TestNG.runSuites(TestNG.java:1099)
+org.testng.TestNG.run(TestNG.java:1067)
+com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)

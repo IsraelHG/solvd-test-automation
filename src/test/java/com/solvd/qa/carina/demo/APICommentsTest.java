@@ -1,6 +1,7 @@
 package com.solvd.qa.carina.demo;
 
 import com.solvd.qa.carina.demo.api.comments.GetCommentMethods;
+import com.solvd.qa.carina.demo.api.comments.PatchCommentMethod;
 import com.solvd.qa.carina.demo.api.comments.PostCommentMethod;
 import com.solvd.qa.carina.demo.api.users.PostUserMethod;
 import com.zebrunner.carina.core.IAbstractTest;
@@ -8,6 +9,7 @@ import io.restassured.response.Response;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
@@ -53,5 +55,27 @@ public class APICommentsTest implements IAbstractTest {
         api.getProperties().remove("name");
         api.callAPIExpectSuccess();
         api.validateResponse();
+    }
+
+    @Test()
+    @MethodOwner(owner = "israel")
+    public void testPatchComment() throws Exception {
+        // Preparing of post request
+        PostCommentMethod api = new PostCommentMethod();
+        api.setProperties("api/comments/comment.properties");
+        // Making call to endpoint
+        Response response = api.callAPIExpectSuccess();
+        api.validateResponse();
+
+        // Using JsonPath
+        String body = response.jsonPath().getString("0.body");
+        LOGGER.info(body);
+
+        // Preparing of patch request
+        PatchCommentMethod patchApi = new PatchCommentMethod();
+        patchApi.setProperties("api/comments/comment.properties");
+        // Making call to endpoint
+        patchApi.callAPIExpectSuccess();
+        patchApi.validateResponse();
     }
 }

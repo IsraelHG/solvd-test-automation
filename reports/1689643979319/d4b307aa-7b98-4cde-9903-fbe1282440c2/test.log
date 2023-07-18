@@ -1,0 +1,110 @@
+[2023-07-18 01:33:02] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-07-18 01:33:02] [1] [INFO] TEST [solvd-test-automation - testPatchComment] STARTED at [18:33:02 2023-07-17]
+[2023-07-18 01:33:02] [1] [INFO] Base properties loaded: api/comments/comment.properties
+[2023-07-18 01:33:04] [1] [INFO] Request method:	POST
+Request URI:	https://jsonplaceholder.typicode.com/comments
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+[
+    {
+        "postId": 1,
+        "id": 1,
+        "name": "vysyvnnogi",
+        "email": "Eliseo@gardner.biz",
+        "body": "mtmmlmfkjjemmuorotmn"
+    }
+]
+HTTP/1.1 201 Created
+Date: Tue, 18 Jul 2023 01:33:02 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 155
+Connection: keep-alive
+X-Powered-By: Express
+X-Ratelimit-Limit: 1000
+X-Ratelimit-Remaining: 999
+X-Ratelimit-Reset: 1689644009
+Vary: Origin, X-HTTP-Method-Override, Accept-Encoding
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+Access-Control-Expose-Headers: Location
+Location: http://jsonplaceholder.typicode.com/comments/501
+X-Content-Type-Options: nosniff
+Etag: W/"9b-UZZZvbvMSIxbTxdJ8XEVyy5iBOs"
+Via: 1.1 vegur
+CF-Cache-Status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=A9dPHw0qBEnx1LnJYS6v0jFcZWGwkwbH6jBYLtOLS6ElMUkhE4K%2F3rtbYGoLa8i9y6v%2BCDRK7erNLXhyjKISE87tzfXHEpOLWSk9UwV%2BxUfJyKrQoc83iffG0Usv66cMsjcjTFJacYxs0pv9W0aS"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 7e86f96c793409f3-LAS
+alt-svc: h3=":443"; ma=86400
+
+{
+    "0": {
+        "postId": 1,
+        "id": 1,
+        "name": "vysyvnnogi",
+        "email": "Eliseo@gardner.biz",
+        "body": "mtmmlmfkjjemmuorotmn"
+    },
+    "id": 501
+}
+
+[2023-07-18 01:33:04] [1] [INFO] mtmmlmfkjjemmuorotmn
+[2023-07-18 01:33:04] [1] [INFO] Base properties loaded: api/comments/comment.properties
+[2023-07-18 01:33:04] [1] [INFO] Request method:	PATCH
+Request URI:	https://jsonplaceholder.typicode.com/comments/1
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Multiparts:		<none>
+Cookies:		<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Body:
+{
+    "body": "jrmphifgemhnhpopinmp"
+}
+HTTP/1.1 200 OK
+Date: Tue, 18 Jul 2023 01:33:03 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: Express
+X-Ratelimit-Limit: 1000
+X-Ratelimit-Remaining: 998
+X-Ratelimit-Reset: 1689644009
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+X-Content-Type-Options: nosniff
+Etag: W/"89-j8AxCvQVxSw1lhl2tdfIrvWlUZc"
+Via: 1.1 vegur
+CF-Cache-Status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=W2eYQqHyzdJR3rK6k7ITEJP%2Fqd%2BvXKSQcc9zjh%2FtsnIwf768xck9%2Fw4eddKd4QzsfoZgoQxrfHyLUHTVq%2FINwuwfWR45gsjDeRSPqd5FGoNVaznAVbG5HgKirHHrOB9nRcnZFRAgqqs3XvM0nlCr"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 7e86f971abe90acd-LAS
+Content-Encoding: gzip
+alt-svc: h3=":443"; ma=86400
+
+{
+    "postId": 1,
+    "id": 1,
+    "name": "id labore ex et quam laborum",
+    "email": "Eliseo@gardner.biz",
+    "body": "jrmphifgemhnhpopinmp"
+}
+
+[2023-07-18 01:33:04] [1] [INFO] TEST [solvd-test-automation - testPatchComment] PASSED at [18:33:04 2023-07-17]
