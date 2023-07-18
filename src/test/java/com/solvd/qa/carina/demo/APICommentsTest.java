@@ -37,7 +37,7 @@ public class APICommentsTest implements IAbstractTest {
 
     @Test()
     @MethodOwner(owner = "israel")
-    public void testCreateComment() throws Exception {
+    public void testCreateComment() {
         // Preparing of request
         PostCommentMethod api = new PostCommentMethod();
         api.setProperties("api/comments/comment.properties");
@@ -49,7 +49,7 @@ public class APICommentsTest implements IAbstractTest {
 
     @Test()
     @MethodOwner(owner = "israel")
-    public void testCreateCommentMissingSomeFields() throws Exception {
+    public void testCreateCommentMissingSomeFields() {
         PostCommentMethod api = new PostCommentMethod();
         api.setProperties("api/comments/comment.properties");
         api.getProperties().remove("name");
@@ -59,7 +59,7 @@ public class APICommentsTest implements IAbstractTest {
 
     @Test()
     @MethodOwner(owner = "israel")
-    public void testPatchComment() throws Exception {
+    public void testPatchComment() {
         // Preparing of post request
         PostCommentMethod api = new PostCommentMethod();
         api.setProperties("api/comments/comment.properties");
