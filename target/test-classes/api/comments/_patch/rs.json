@@ -1,7 +1,3 @@
 {
-  "postId": "regex:[\\d]",
-  "id": "regex:[\\d]",
-  "name": "regex:[a-zA-Z\\d]+",
-  "email": "regex:[a-zA-Z\\d\\_\\.]+@[a-z]+\\.[a-z]{2,4}",
   "body": "regex:[a-zA-Z\\d]+"
 }
