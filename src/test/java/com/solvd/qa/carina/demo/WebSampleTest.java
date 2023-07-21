@@ -2,8 +2,11 @@ package com.solvd.qa.carina.demo;
 
 import java.util.List;
 
+import com.solvd.qa.carina.demo.gui.pages.desktop.HomePage;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -37,7 +40,10 @@ public class WebSampleTest implements IAbstractTest {
     @TestLabel(name = "feature", value = { "web", "regression" })
     public void testModelSpecs() {
         // Open GSM Arena home page and verify page is opened
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        //HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+
+        // From lecture...
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
@@ -71,7 +77,7 @@ public class WebSampleTest implements IAbstractTest {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(specs.get(0).readSpec(SpecType.ANNOUNCED), "2016, March 31. Released 2016, May 06");
         softAssert.assertEquals(specs.get(0).readSpec(SpecType.TECHNOLOGY), "GSM / HSPA / LTE");
-        softAssert.assertEquals(specs.get(1).readSpec(SpecType.ANNOUNCED), "2023, February 29");
+        softAssert.assertEquals(specs.get(1).readSpec(SpecType.ANNOUNCED), "2023, February 01");
         softAssert.assertEquals(specs.get(1).readSpec(SpecType.TECHNOLOGY), "GSM / CDMA / HSPA / EVDO / LTE / 5G");
         // for desktop could be compared 3 devices, when for mobile only 2
         if (specs.size() > 2) {
