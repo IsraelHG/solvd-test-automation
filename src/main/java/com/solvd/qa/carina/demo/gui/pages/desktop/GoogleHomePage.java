@@ -1,6 +1,6 @@
 package com.solvd.qa.carina.demo.gui.pages.desktop;
 
-import com.solvd.qa.carina.demo.gui.components.footer.GoogleSettingMenu;
+import com.solvd.qa.carina.demo.gui.components.footer.menu.GoogleSettingMenu;
 import com.solvd.qa.carina.demo.gui.pages.common.GoogleHomePageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

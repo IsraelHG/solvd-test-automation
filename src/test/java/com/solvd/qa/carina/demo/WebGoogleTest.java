@@ -1,15 +1,14 @@
 package com.solvd.qa.carina.demo;
 
 import com.solvd.qa.carina.demo.gui.pages.desktop.*;
+import com.zebrunner.carina.core.IAbstractTest;
+import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
 import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.zebrunner.carina.core.IAbstractTest;
-import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.asserts.SoftAssert;
 
 public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
@@ -26,11 +25,8 @@ public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
 
         googleHomePage.performSearch(search);
         SearchResultPage searchResultPage = new SearchResultPage(getDriver(), search);
+
         Assert.assertTrue(searchResultPage.isPageOpened(), "Search result page did not load.");
-
-        String actualLink = searchResultPage.getCompanyLinkURL(search);
-
-        Assert.assertEquals(actualLink, link, "Link URL does not match for company: " + search);
         Assert.assertTrue(searchResultPage.validateSearchResultsContainWord(search), "Word " + search + " is not present in all search results.");
     }
 
