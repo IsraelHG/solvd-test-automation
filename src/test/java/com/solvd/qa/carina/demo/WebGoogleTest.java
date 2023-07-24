@@ -1,33 +1,24 @@
 package com.solvd.qa.carina.demo;
 
 import com.solvd.qa.carina.demo.gui.pages.desktop.*;
+import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
+import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.asserts.SoftAssert;
 
-public class WebGoogleTest implements IAbstractTest {
+public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebGoogleTest.class);
 
-    @DataProvider(name = "companiesSearch")
-    public Object[][] provideCompanySearch() {
-        return new Object[][]{
-                {"amazon", "https://www.amazon.com/"},
-                {"ebay", "https://www.ebay.com/"},
-                {"apple", "https://www.apple.com/"},
-                {"samsung", "https://www.samsung.com/us/"}
-        };
-    }
-
-    @Test(dataProvider = "companiesSearch")
+    @Test(dataProvider = "DataProvider")
     @MethodOwner(owner = "IsraelHG")
+    @XlsDataSourceParameters(path = "data_source/googleSearches.xlsx", sheet = "companies", dsUid = "TUID", dsArgs = "companyName, companyWebsite")
     public void testGoogleSearch(String search, String link) {
         GoogleHomePage googleHomePage = new GoogleHomePage(getDriver());
         googleHomePage.open();
