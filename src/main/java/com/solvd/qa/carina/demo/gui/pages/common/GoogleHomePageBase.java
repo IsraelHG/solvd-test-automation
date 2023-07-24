@@ -1,6 +1,7 @@
 package com.solvd.qa.carina.demo.gui.pages.common;
 
-import com.solvd.qa.carina.demo.gui.components.footer.GoogleFooterMenuBase;
+import com.solvd.qa.carina.demo.gui.components.footer.GoogleSettingMenuBase;
+import com.solvd.qa.carina.demo.gui.pages.desktop.*;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
@@ -10,13 +11,18 @@ public abstract class GoogleHomePageBase extends AbstractPage {
         super(driver);
     }
 
-    //public abstract GoogleFooterMenuBase getFooterMenu();
+    protected GoogleHomePageBase(WebDriver driver, String path) {
+        super(driver);
+    }
+
+    public abstract GoogleSettingMenuBase openMenu();
+
     public abstract void performSearch(String input);
 
-    public abstract void feelingLuckySearch();
+    public abstract GoogleStorePage clickStoreButton();
 
-    @Override
-    public void open() {
-        super.open();
-    }
+    public abstract GoogleImagePage clickImageButton();
+
+    public abstract GoogleHomePage changeTheme();
+
 }
