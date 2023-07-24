@@ -1,7 +1,9 @@
 package com.solvd.qa.carina.demo.gui.pages.common;
 
-import com.solvd.qa.carina.demo.gui.components.footer.GoogleSettingMenuBase;
-import com.solvd.qa.carina.demo.gui.pages.desktop.*;
+import com.solvd.qa.carina.demo.gui.components.footer.menu.GoogleSettingMenuBase;
+import com.solvd.qa.carina.demo.gui.pages.desktop.GoogleHomePage;
+import com.solvd.qa.carina.demo.gui.pages.desktop.GoogleImagePage;
+import com.solvd.qa.carina.demo.gui.pages.desktop.GoogleStorePage;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 

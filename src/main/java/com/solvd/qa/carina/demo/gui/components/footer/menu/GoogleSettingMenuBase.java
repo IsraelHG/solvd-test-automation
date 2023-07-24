@@ -1,4 +1,4 @@
-package com.solvd.qa.carina.demo.gui.components.footer;
+package com.solvd.qa.carina.demo.gui.components.footer.menu;
 
 import com.solvd.qa.carina.demo.gui.pages.common.GoogleSettingsPageBase;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
