@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class GoogleSettingMenu extends GoogleSettingMenuBase {
 
-    @FindBy(xpath = "//g-menu-item[1]")
+    @FindBy(xpath = ".//g-menu-item[1]")
     private ExtendedWebElement searchSettingLink;
 
     public GoogleSettingMenu(WebDriver driver, SearchContext searchContext) {

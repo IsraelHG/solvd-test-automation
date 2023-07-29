@@ -6,13 +6,10 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = GoogleHomePageBase.class)
 public class GoogleHomePage extends GoogleHomePageBase {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GoogleHomePage.class);
 
     @FindBy(xpath = "//g-menu[@role='menu']")
     private GoogleSettingMenu menu;
@@ -26,7 +23,7 @@ public class GoogleHomePage extends GoogleHomePageBase {
     @FindBy(xpath = "//div/a[@aria-label='Search for Images (opens a new tab)']")
     private ExtendedWebElement topImageButton;
 
-    @FindBy(xpath = "//a[@href='https://store.google.com/US?utm_source=hp_header&utm_medium=google_ooo&utm_campaign=GS100042&hl=en-US']")
+    @FindBy(xpath = "//body[@jsmodel]/div/div/a[@class][2]")
     private ExtendedWebElement topStoreButton;
 
     @FindBy(xpath = "//g-popup/div[@role='button']")
@@ -37,6 +34,8 @@ public class GoogleHomePage extends GoogleHomePageBase {
 
     @FindBy(xpath = "//body/div[@data-hveid='1']/div[5]/div[1]")
     private ExtendedWebElement regionAfghanistan;
+
+    private String prev = "";
 
 
     public GoogleHomePage(WebDriver driver) {
@@ -51,7 +50,6 @@ public class GoogleHomePage extends GoogleHomePageBase {
 
     @Override
     public GoogleSettingMenu openMenu() {
-        bottomSettingsButton.hover();
         bottomSettingsButton.click();
         return menu;
     }
@@ -64,13 +62,11 @@ public class GoogleHomePage extends GoogleHomePageBase {
 
     @Override
     public GoogleStorePage clickStoreButton() {
-        topStoreButton.hover();
         topStoreButton.click();
         return new GoogleStorePage(driver);
     }
 
     public GoogleImagePage clickImageButton() {
-        topImageButton.hover();
         topImageButton.click();
         return new GoogleImagePage(driver);
     }
@@ -86,7 +82,11 @@ public class GoogleHomePage extends GoogleHomePageBase {
         return regionAfghanistan.getText();
     }
 
-    public String getLanguage() {
-        return bottomSettingsButton.getText();
+    public boolean isLanguageChanged() {
+        if (!prev.equals(bottomSettingsButton.getText())) {
+            prev = bottomSettingsButton.getText();
+            return true;
+        }
+        return false;
     }
 }

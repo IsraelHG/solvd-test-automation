@@ -5,20 +5,16 @@ import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
 import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WebGoogleTest.class);
-
     @Test(dataProvider = "DataProvider")
     @MethodOwner(owner = "IsraelHG")
-    @XlsDataSourceParameters(path = "data_source/googleSearches.xlsx", sheet = "companies", dsUid = "TUID", dsArgs = "companyName, companyWebsite")
-    public void testGoogleSearch(String search, String link) {
+    @XlsDataSourceParameters(path = "data_source/googleSearches.xlsx", sheet = "companies", dsUid = "TUID", dsArgs = "companyName")
+    public void testGoogleSearch(String search) {
         GoogleHomePage googleHomePage = new GoogleHomePage(getDriver());
         googleHomePage.open();
         Assert.assertTrue(googleHomePage.isPageOpened(), "Home page is not opened");
@@ -42,9 +38,10 @@ public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
         Assert.assertEquals(googleImagePage.readImageDescription(), "Google Images", "Could not locate the Google image icon");
     }
 
-    @Test()
+    @Test(dataProvider = "DataProvider")
     @MethodOwner(owner = "IsraelHG")
-    public void testGoogleProductSpecs() {
+    @XlsDataSourceParameters(path = "data_source/productSearches.xlsx", sheet = "products", dsUid = "TUID", dsArgs = "productOne, productTwo, productOnePrice, productTwoPrice")
+    public void testGoogleProductSpecs(String productOne, String productTwo, String productOnePrice, String productTwoPrice) {
         GoogleHomePage googleHomePage = new GoogleHomePage(getDriver());
         googleHomePage.open();
         Assert.assertTrue(googleHomePage.isPageOpened(), "Home page is not opened");
@@ -52,20 +49,17 @@ public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
         GoogleStorePage googleStorePage = googleHomePage.clickStoreButton();
         Assert.assertTrue(googleStorePage.isPageOpened(), "Google Store page is not opened");
 
-        String product1 = "pixel 7 pro";
-        GoogleStoreResultPage googleStoreResultPage = googleStorePage.searchProduct(product1);
+        GoogleStoreResultPage googleStoreResultPage = googleStorePage.searchProduct(productOne);
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(googleStoreResultPage.getProductName(), "Pixel 7 Pro", "Phone name is not correct");
-        softAssert.assertEquals(googleStoreResultPage.getPrice(), "From $899", "Phone price is not correct");
+        softAssert.assertEquals(googleStoreResultPage.getProductSpec(productOne), productOne, "Phone name is not correct");
+        softAssert.assertEquals(googleStoreResultPage.getProductSpec(productOnePrice), productOnePrice, "Phone price is not correct");
         googleStorePage = googleStoreResultPage.goHome();
 
-        String product2 = "pixel 7a";
         googleStorePage.refresh(1);
-        googleStorePage.searchProduct(product2);
-        softAssert.assertEquals(googleStoreResultPage.getProductName(), "Pixel 7a", "Phone name is not correct");
-        softAssert.assertEquals(googleStoreResultPage.getPrice(), "From $499", "Phone price is not correct");
+        googleStorePage.searchProduct(productTwo);
+        softAssert.assertEquals(googleStoreResultPage.getProductSpec(productTwo), productTwo, "Phone name is not correct");
+        softAssert.assertEquals(googleStoreResultPage.getProductSpec(productTwoPrice), productTwoPrice, "Phone price is not correct");
         softAssert.assertAll();
-
     }
 
     @Test()
@@ -99,6 +93,6 @@ public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
         Assert.assertTrue(googleSettingsPage.isPageOpened(), "Google Settings page is not opened.");
 
         googleSettingsPage.selectLanguage();
-        Assert.assertEquals(googleHomePage.getLanguage(), "Impostazioni");
+        Assert.assertTrue(googleHomePage.isLanguageChanged());
     }
 }
