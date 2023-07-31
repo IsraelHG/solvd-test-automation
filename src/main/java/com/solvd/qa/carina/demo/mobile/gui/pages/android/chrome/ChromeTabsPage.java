@@ -21,11 +21,7 @@ public class ChromeTabsPage extends ChromeTabsPageBase {
 
     public ChromeTabsPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public boolean isPageOpened() {
-        return newTabBtn.isElementPresent();
+        setUiLoadedMarker(newTabBtn);
     }
 
     public ChromeTabsMenu getMenu() {
@@ -37,12 +33,4 @@ public class ChromeTabsPage extends ChromeTabsPageBase {
     public ChromeHomePage createNewTab() {
         return getMenu().openNewTab();
     }
-
-//    @Override
-//    public ChromeHomePageBase closeAllTabs() {
-//        menuBtn.click();
-//        ChromeTabsPage temp = getMenu().closeAllTabs();
-//        newTabBtn.click();
-//        return initPage(getDriver(), ChromeHomePageBase.class);
-//    }
 }
