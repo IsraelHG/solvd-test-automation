@@ -1,8 +1,6 @@
 package com.solvd.qa.carina.demo;
 
-import com.solvd.qa.carina.demo.mobile.gui.pages.common.chrome.ChromeHomePageBase;
-import com.solvd.qa.carina.demo.mobile.gui.pages.common.chrome.ChromeTabsPageBase;
-import com.solvd.qa.carina.demo.mobile.gui.pages.common.chrome.ResultPageBase;
+import com.solvd.qa.carina.demo.mobile.gui.pages.common.chrome.*;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
@@ -29,12 +27,62 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
         ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
         Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
 
-        ChromeTabsPageBase tabsPage = homePage.openNewTabPage();
+        ChromeTabsPageBase tabsPage = homePage.getHeader().openNewTabPage();
         Assert.assertTrue(tabsPage.isPageOpened(), "Google tabs page did not open properly.");
 
         homePage = tabsPage.getMenu().openNewTab();
         Assert.assertTrue(homePage.isPageOpened(), "New Google Chrome home page (after creating new tab) did not open properly.");
     }
 
-    
+    @Test()
+    @MethodOwner(owner = "IsraelHG")
+    public void testPageInfo() {
+        ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
+
+        ChromeInfoPageBase chromeInfoPage = homePage.getHeader().openMenu().openPageInfo();
+        Assert.assertTrue(chromeInfoPage.isPageOpened());
+        Assert.assertEquals(chromeInfoPage.checkInfo(), "chrome-native://newtab", "Chrome info page is not correct.");
+    }
+
+    @Test()
+    @MethodOwner(owner = "IsraelHG")
+    public void testClearHistory() {
+        ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
+
+        String search = "solvd inc.";
+        ResultPageBase resultPage = homePage.search(search);
+        Assert.assertTrue(resultPage.isPageOpened(), "Google Chrome application did not open properly.");
+        homePage = resultPage.getHeader().goHome();
+
+        ChromeHistoryPageBase historyPage = homePage.getHeader().openMenu().openHistoryPage();
+        Assert.assertTrue(historyPage.isPageOpened(), "Google history page did not open properly.");
+
+        ClearBrowsingDataPageBase clearBrowsingPage = historyPage.clearHistory();
+        Assert.assertTrue(clearBrowsingPage.isPageOpened(), "Clear browsing page did not open properly.");
+
+        historyPage = clearBrowsingPage.clearData();
+        Assert.assertTrue(historyPage.isPageOpened(), "Google history page did not open properly.");
+    }
+
+    @Test()
+    @MethodOwner(owner = "IsraelHG")
+    public void testBookmarkFeature() {
+        ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
+
+        String search = "solvd. inc";
+        ResultPageBase resultPage = homePage.search(search);
+        Assert.assertTrue(resultPage.isPageOpened(), "Result page did not load properly.");
+        resultPage.getHeader().openMenu().addBookmark();
+
+        ChromeBookmarkPageBase bookmarkPage = resultPage.getHeader().openMenu().openBookmarkPage();
+        Assert.assertTrue(bookmarkPage.isPageOpened(), "Bookmarks page did not load properly.");
+
+        ChromeBookmarkMobileListPageBase bookmarkMobileList = bookmarkPage.openBookmarkMobilePage();
+        bookmarkMobileList.getOptionMenu().deleteBookmark();
+        Assert.assertTrue(bookmarkPage.isPageOpened(), "Mobile bookmark page is not loaded.");
+
+    }
 }

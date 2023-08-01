@@ -12,6 +12,4 @@ public abstract class ChromeTabsPageBase extends AbstractPage {
     public abstract ChromeTabsMenu getMenu();
 
     public abstract ChromeHomePageBase createNewTab();
-
-    //public abstract ChromeHomePageBase closeAllTabs();
 }
