@@ -33,7 +33,7 @@ public class GoogleHomePage extends GoogleHomePageBase {
     private ExtendedWebElement darkThemeButton;
 
     @FindBy(xpath = "//body/div[@data-hveid='1']/div[5]/div[1]")
-    private ExtendedWebElement regionAfghanistan;
+    private ExtendedWebElement regionLabel;
 
     private String prev = "";
 
@@ -79,7 +79,7 @@ public class GoogleHomePage extends GoogleHomePageBase {
     }
 
     public String getRegion() {
-        return regionAfghanistan.getText();
+        return regionLabel.getText();
     }
 
     public boolean isLanguageChanged() {

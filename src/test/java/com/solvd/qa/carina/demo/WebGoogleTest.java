@@ -1,6 +1,8 @@
 package com.solvd.qa.carina.demo;
 
 import com.solvd.qa.carina.demo.gui.pages.desktop.*;
+import com.solvd.qa.carina.demo.gui.pages.desktop.enums.Languages;
+import com.solvd.qa.carina.demo.gui.pages.desktop.enums.Regions;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
@@ -72,12 +74,13 @@ public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
         googleHomePage = googleHomePage.changeTheme();
         Assert.assertTrue(googleHomePage.isPageOpened(), "Home page is not opened.");
 
-        String region = "Afghanistan";
         GoogleSettingsPage googleSettingsPage = googleHomePage.openMenu().openSearchSettingsPage();
         Assert.assertTrue(googleSettingsPage.isPageOpened(), "Google Settings page is not opened.");
 
-        googleSettingsPage.selectRegion();
-        Assert.assertEquals(googleHomePage.getRegion(), region);
+        // Change the region of your choice
+        Regions region = Regions.DENMARK;
+        googleSettingsPage.selectRegion(region);
+        Assert.assertEquals(googleHomePage.getRegion(), "Denmark", "Region was not changed correctly.");
     }
 
     @Test()
@@ -92,7 +95,8 @@ public class WebGoogleTest implements IAbstractTest, IAbstractDataProvider {
         GoogleSettingsPage googleSettingsPage = googleHomePage.openMenu().openSearchSettingsPage();
         Assert.assertTrue(googleSettingsPage.isPageOpened(), "Google Settings page is not opened.");
 
-        googleSettingsPage.selectLanguage();
+        Languages language = Languages.RUSSIAN;
+        googleSettingsPage.selectLanguage(language);
         Assert.assertTrue(googleHomePage.isLanguageChanged());
     }
 }
