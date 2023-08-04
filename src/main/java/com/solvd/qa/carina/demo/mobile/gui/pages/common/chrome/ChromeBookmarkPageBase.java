@@ -9,4 +9,6 @@ public abstract class ChromeBookmarkPageBase extends AbstractPage {
     }
 
     public abstract ChromeBookmarkMobileListPageBase openBookmarkMobilePage();
+
+    
 }

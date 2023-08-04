@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="Carina Google Tests - Web Google Sample" parallel="tests" thread-count="2">
+<suite verbose="1" name="Carina Demo Tests - Web Sample" parallel="methods">
 
     <parameter name="suiteOwner" value="qpsdemo"/>
     <parameter name="jenkinsJobName" value="Web-Demo-Test"/>
@@ -14,16 +14,16 @@
     <parameter name="jenkinsJobExecutionMode" value="continue"/>
     <parameter name="jenkinsAutoScreenshot" value="true"/>
 
-    <!--    <test name="GSM arena web tests">-->
-    <!--        <classes>-->
-    <!--            <class name="com.solvd.qa.carina.demo.WebSampleTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <test name="Google web tests">
+    <test name="GSM arena web tests">
         <classes>
-            <class name="com.solvd.qa.carina.demo.WebGoogleTest"/>
+            <class name="com.solvd.qa.carina.demo.WebSampleTest"/>
         </classes>
     </test>
+
+    <!--    <test name="Google web tests">-->
+    <!--        <classes>-->
+    <!--            <class name="com.solvd.qa.carina.demo.WebGoogleTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 </suite>

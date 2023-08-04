@@ -12,4 +12,6 @@ public abstract class ChromeHomePageBase extends AbstractPage {
     public abstract HeaderMenuBase getHeader();
 
     public abstract ResultPageBase search(String text);
+
+    public abstract void skipIntroMenu();
 }

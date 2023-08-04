@@ -10,4 +10,6 @@ public abstract class ChromeBookmarkMobileListPageBase extends AbstractPage {
     }
 
     public abstract OptionMenuBase getOptionMenu();
+
+    public abstract boolean isBookmarksCleared();
 }

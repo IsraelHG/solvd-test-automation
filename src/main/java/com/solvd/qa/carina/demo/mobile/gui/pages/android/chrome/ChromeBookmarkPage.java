@@ -27,5 +27,5 @@ public class ChromeBookmarkPage extends ChromeBookmarkPageBase {
         return initPage(getDriver(), ChromeBookmarkMobileListPageBase.class);
     }
 
-
+    
 }

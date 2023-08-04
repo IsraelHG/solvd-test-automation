@@ -9,4 +9,6 @@ public abstract class ChromeHistoryPageBase extends AbstractPage {
     }
 
     public abstract ClearBrowsingDataPageBase clearHistory();
+
+    public abstract boolean isHistoryCleared();
 }

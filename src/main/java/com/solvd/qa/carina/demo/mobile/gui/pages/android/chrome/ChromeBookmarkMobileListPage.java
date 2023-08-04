@@ -19,6 +19,9 @@ public class ChromeBookmarkMobileListPage extends ChromeBookmarkMobileListPageBa
     @FindBy(id = "com.android.chrome:id/app_menu_list")
     private ExtendedWebElement optionMenu;
 
+    @FindBy(id = "com.android.chrome:id/content")
+    private ExtendedWebElement listOfBookmarks;
+
     public ChromeBookmarkMobileListPage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(bookmarks);
@@ -28,5 +31,10 @@ public class ChromeBookmarkMobileListPage extends ChromeBookmarkMobileListPageBa
     public OptionMenu getOptionMenu() {
         optionMenuBtn.click();
         return new OptionMenu(driver);
+    }
+
+    @Override
+    public boolean isBookmarksCleared() {
+        return !listOfBookmarks.isElementPresent();
     }
 }
