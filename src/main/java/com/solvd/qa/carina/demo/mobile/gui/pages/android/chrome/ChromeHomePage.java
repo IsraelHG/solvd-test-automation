@@ -26,7 +26,7 @@ public class ChromeHomePage extends ChromeHomePageBase {
     public ChromeHomePage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(searchBar);
-        skipBtn.clickIfPresent();
+        skipBtn.clickIfPresent(5);
     }
 
     @Override
