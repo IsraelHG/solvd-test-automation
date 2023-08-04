@@ -16,6 +16,9 @@ public class ChromeHistoryPage extends ChromeHistoryPageBase {
     @FindBy(id = "com.android.chrome:id/clear_browsing_data_button")
     private ExtendedWebElement clearHistoryBtn;
 
+    @FindBy(id = "com.android.chrome:id/empty_view")
+    private ExtendedWebElement emptyPageIndicator;
+
     public ChromeHistoryPage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(titlePage);
@@ -25,5 +28,10 @@ public class ChromeHistoryPage extends ChromeHistoryPageBase {
     public ClearBrowsingDataPageBase clearHistory() {
         clearHistoryBtn.click();
         return initPage(getDriver(), ClearBrowsingDataPageBase.class);
+    }
+
+    @Override
+    public boolean isHistoryCleared() {
+        return (!clearHistoryBtn.isElementPresent() && emptyPageIndicator.isElementPresent());
     }
 }

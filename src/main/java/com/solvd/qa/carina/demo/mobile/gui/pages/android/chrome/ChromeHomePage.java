@@ -26,7 +26,6 @@ public class ChromeHomePage extends ChromeHomePageBase {
     public ChromeHomePage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(searchBar);
-        skipBtn.clickIfPresent(5);
     }
 
     @Override
@@ -39,5 +38,10 @@ public class ChromeHomePage extends ChromeHomePageBase {
         searchBar.type(text);
         resultOne.click();
         return initPage(getDriver(), ResultPageBase.class);
+    }
+
+    @Override
+    public void skipIntroMenu() {
+        skipBtn.clickIfPresent(5);
     }
 }

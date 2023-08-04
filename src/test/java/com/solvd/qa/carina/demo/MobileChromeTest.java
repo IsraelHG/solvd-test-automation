@@ -15,9 +15,10 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
     @XlsDataSourceParameters(path = "data_source/mobileGoogleSearches.xlsx", sheet = "companies", dsUid = "TUID", dsArgs = "companyName")
     public void testChromeSearch(String search) {
         ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        homePage.skipIntroMenu();
         Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
 
-        ResultPageBase resultPage = homePage.search(search);
+        ResultPageBase resultPage = homePage.search(search + "asdf");
         Assert.assertTrue(resultPage.isPageOpened(), "Result page did not load up properly.");
     }
 
@@ -25,6 +26,7 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
     @MethodOwner(owner = "IsraelHG")
     public void testChromeTabs() {
         ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        homePage.skipIntroMenu();
         Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
 
         ChromeTabsPageBase tabsPage = homePage.getHeader().openNewTabPage();
@@ -38,6 +40,7 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
     @MethodOwner(owner = "IsraelHG")
     public void testPageInfo() {
         ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        homePage.skipIntroMenu();
         Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
 
         ChromeInfoPageBase chromeInfoPage = homePage.getHeader().openMenu().openPageInfo();
@@ -49,6 +52,7 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
     @MethodOwner(owner = "IsraelHG")
     public void testClearHistory() {
         ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        homePage.skipIntroMenu();
         Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
 
         String search = "solvd inc.";
@@ -64,12 +68,14 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
 
         historyPage = clearBrowsingPage.clearData();
         Assert.assertTrue(historyPage.isPageOpened(), "Google history page did not open properly.");
+        Assert.assertTrue(historyPage.isHistoryCleared(), "There is still some history to be cleared.");
     }
 
     @Test()
     @MethodOwner(owner = "IsraelHG")
     public void testBookmarkFeature() {
         ChromeHomePageBase homePage = initPage(getDriver(), ChromeHomePageBase.class);
+        homePage.skipIntroMenu();
         Assert.assertTrue(homePage.isPageOpened(), "Google Chrome application did not open properly.");
 
         String search = "solvd. inc";
@@ -82,7 +88,8 @@ public class MobileChromeTest implements IAbstractTest, IMobileUtils, IAbstractD
 
         ChromeBookmarkMobileListPageBase bookmarkMobileList = bookmarkPage.openBookmarkMobilePage();
         bookmarkMobileList.getOptionMenu().deleteBookmark();
-        Assert.assertTrue(bookmarkPage.isPageOpened(), "Mobile bookmark page is not loaded.");
+        Assert.assertTrue(bookmarkMobileList.isPageOpened(), "Mobile bookmark page is not loaded.");
+        Assert.assertTrue(bookmarkMobileList.isBookmarksCleared(), "Bookmarks are not cleared.");
 
     }
 }
